@@ -1,9 +1,11 @@
-package com.ssafy.sagwa;
+package com.ssafy.sagwa.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.ssafy.sagwa.R;
+import com.ssafy.sagwa.activity.SigninActivity;
+import com.ssafy.sagwa.activity.SignupActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,22 +34,25 @@ import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.HttpUrl;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class SplashActivity extends AppCompatActivity {
 
     // Firebase 인증 객체
     private FirebaseAuth auth;
-    private static final int SPLASH_TIME_OUT = 1000;
+    private static final int SPLASH_TIME_OUT = 2000;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);
-
         auth = FirebaseAuth.getInstance();
+
+//        auth.signOut(); // 테스트용 로그아웃
 
         new Handler().postDelayed(() -> {
             FirebaseUser currentUser = auth.getCurrentUser();
@@ -69,7 +78,7 @@ public class SplashActivity extends AppCompatActivity {
             OkHttpClient client = getSecureOkHttpClient();
 
             HttpUrl.Builder urlBuilder = HttpUrl.parse("https://k10b201.p.ssafy.io/sagwa/api/valid").newBuilder();
-            urlBuilder.addQueryParameter("memberEmail", email);
+            urlBuilder.addQueryParameter("email", email);
             String url = urlBuilder.build().toString();
 
             Request request = new Request.Builder().url(url).build();
@@ -91,12 +100,11 @@ public class SplashActivity extends AppCompatActivity {
                         String jsonResponse = response.body().string();
                         JSONObject jsonObject = new JSONObject(jsonResponse);
                         boolean isRegistered = jsonObject.getBoolean("data");
-                        System.out.println(isRegistered);
                         runOnUiThread(() -> {
                             if (isRegistered) {
                                 proceedToMain();
                             } else {
-                                promptLogin();
+                                promptSignup();
                             }
                         });
                     } catch (JSONException e) {
@@ -148,4 +156,10 @@ public class SplashActivity extends AppCompatActivity {
         startActivity(new Intent(SplashActivity.this, SigninActivity.class));
         finish();
     }
+
+    private void promptSignup() {
+        startActivity(new Intent(SplashActivity.this, SignupActivity.class));
+        finish();
+    }
 }
+
