@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SigninActivity"
     android:background="@color/back"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".activity.SigninActivity">
 
     <ImageView
         android:id="@+id/imageViewSplash"
@@ -17,11 +17,13 @@
         android:layout_gravity="center"
         android:src="@drawable/apple_logo" />
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/btn_google"
-        android:layout_width="200dp"
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:background="@drawable/point_box"
+        android:text="시작하기"
+        android:textColor="#FFFFFF"
         tools:ignore="MissingConstraints" />
-
 </LinearLayout>

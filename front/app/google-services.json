@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "826511314098",
+    "project_id": "sagwa-e3753",
+    "storage_bucket": "sagwa-e3753.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826511314098:android:d01a1590227b6b294c0dab",
+        "android_client_info": {
+          "package_name": "com.ssafy.sagwa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826511314098-54kf7e7ffnqckalnp7qe4d7stq9ei7k4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.sagwa",
+            "certificate_hash": "4138b6544d10125e84523fd4d8a872e1ea9a924a"
+          }
+        },
+        {
+          "client_id": "826511314098-fuiiisoldju80suva4ognrna538b9eff.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.sagwa",
+            "certificate_hash": "43bacc55d9f04cc2c012075c1651fc50684fe0a2"
+          }
+        },
+        {
+          "client_id": "826511314098-lrg8d78vg78lp9tov772k8tli7c0sidg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.sagwa",
+            "certificate_hash": "38e45c62efe933bd773f76a2d62ba4c9d74d7334"
+          }
+        },
+        {
+          "client_id": "826511314098-mlrl5je93mc20hdgngvta30mm2san6ca.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.sagwa",
+            "certificate_hash": "7c31136209596bb2b9c3795207e79fcf54eb82b4"
+          }
+        },
+        {
+          "client_id": "826511314098-pt3tnb3i8d7ed978m2ah3sh4v9u4dqrr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ssafy.sagwa",
+            "certificate_hash": "2fceaefdabca44459ca1194313c6f550ff556b13"
+          }
+        },
+        {
+          "client_id": "826511314098-l33sfbmb562ea1paft1s9qn4oejjrkhr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKR4541NpxtQ7j6tQEfugrvo_tr7I39Z4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826511314098-l33sfbmb562ea1paft1s9qn4oejjrkhr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
