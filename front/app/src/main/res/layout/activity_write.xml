@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".WriteActivity">
+    tools:context=".activity.WriteActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -55,8 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginBottom="40dp"
                 android:layout_marginRight="30dp"
+                android:layout_marginBottom="40dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -115,8 +115,8 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_color_point"
                     android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
                     android:paddingTop="5dp"
+                    android:paddingRight="20dp"
                     android:paddingBottom="5dp"
                     android:text="등록"
                     android:textColor="@color/white"
