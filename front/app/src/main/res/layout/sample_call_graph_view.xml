@@ -1,0 +1,82 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_lis"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_marginBottom="20dp"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@drawable/point_box"
+    android:backgroundTint="#FFFBF8">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/call_icon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:srcCompat="@drawable/apple_icon_green" />
+
+            <TextView
+                android:id="@+id/call_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="엄마"/>
+            <TextView
+                android:id="@+id/call_x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="x"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/call_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:paddingVertical="10dp"
+            android:text="01011112222"/>
+
+        <ProgressBar
+            android:id="@+id/call_graph"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/point_box"
+            android:layout_gravity="center"
+            android:paddingVertical="10dp"/>
+
+        <TextView
+            android:id="@+id/call_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:textColor="#38CC50"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="5번"/>
+
+    </LinearLayout>
+
+</LinearLayout>
