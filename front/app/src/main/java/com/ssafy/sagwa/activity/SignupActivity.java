@@ -77,14 +77,12 @@ public class SignupActivity extends AppCompatActivity {
 
             MediaType mediaType = MediaType.parse("application/json");
             String requestBody = "{\"email\":\"" + email + "\"}";
-            System.out.println(requestBody);
             RequestBody body = RequestBody.create(requestBody, mediaType);
 
             Request request = new Request.Builder()
                 .url(url)
                 .post(body)
                 .build();
-            System.out.println(request.toString());
             client.newCall(request).enqueue(new okhttp3.Callback() {
 
                 @Override
@@ -101,7 +99,6 @@ public class SignupActivity extends AppCompatActivity {
                             JSONObject jsonObject = null;
                             jsonObject = new JSONObject(jsonResponse);
                             long loginId = jsonObject.getLong("data");
-                            System.out.println("1 " + loginId);
                             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                             SharedPreferences.Editor editor = sharedPref.edit();
                             editor.putLong("loginId", loginId);
