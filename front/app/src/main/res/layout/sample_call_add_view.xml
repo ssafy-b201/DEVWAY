@@ -50,7 +50,9 @@
         android:layout_marginHorizontal="20dp"
         android:paddingHorizontal="20dp"
         android:paddingVertical="5dp"
-        android:background="@drawable/border_box"/>
+        android:background="@drawable/border_box"
+        android:maxLength="20"
+        android:hint="최대 20자"/>
 
     <TextView
         android:id="@+id/call_add_real"

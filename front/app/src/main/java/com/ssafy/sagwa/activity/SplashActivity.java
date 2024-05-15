@@ -1,6 +1,7 @@
 package com.ssafy.sagwa.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -44,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
 
     // Firebase 인증 객체
     private FirebaseAuth auth;
-    private static final int SPLASH_TIME_OUT = 2000;
+    private static final int SPLASH_TIME_OUT = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +149,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void proceedToMain() {
-        startActivity(new Intent(SplashActivity.this, MainActivity.class));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            startActivity(new Intent(SplashActivity.this,CalendarActivity.class));
+        }
         finish();
     }
 
