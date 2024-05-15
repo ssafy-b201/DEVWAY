@@ -2,6 +2,7 @@ package com.ssafy.sagwa.activity;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -286,7 +288,26 @@ public class CallListActivity extends AppCompatActivity {
             xBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    deleteCall(number);
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CallListActivity.this);
+                    builder.setTitle("삭제 확인");
+                    builder.setMessage("정말 삭제하시겠습니까?");
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            deleteCall(number);
+                        }
+                    });
+
+                    builder.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                        }
+                    });
+
+                    // 다이얼로그를 화면에 표시
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
             });
 
