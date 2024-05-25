@@ -1,0 +1,95 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8050:8050"
+    environment:
+      - TZ=Asia/Seoul
+      - GOOGLE_APPLICATION_CREDENTIALS=/credentials/MyGC.json
+    volumes:
+      - /home/ubuntu/oringe/devway/src/main/resources/static:/app/static
+      - /home/ubuntu/MyGC.json:/credentials/MyGC.json
+    networks:
+      - devway_network
+    depends_on:
+      - mongo
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+#      - ./src/main/resources/static:/usr/share/nginx/html/static
+      - /home/ubuntu/apple/devway/src/main/resources/static:/usr/share/nginx/html/sagwa_static
+      - /home/ubuntu/oringe/devway/src/main/resources/static:/usr/share/nginx/html/oringe_static
+      - /home/ubuntu/certbot/www:/var/www/certbot
+      - /home/ubuntu/certbot/conf:/etc/letsencrypt
+    depends_on:
+      - app
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Seoul
+    networks:
+      - devway_network
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - /home/ubuntu/certbot/www:/var/www/certbot
+      - /home/ubuntu/certbot/conf:/etc/letsencrypt
+#    entrypoint: "certbot certonly --webroot --webroot-path=/var/www/certbot --email wer1915@gmail.com --agree-tos --no-eff-email --staging -d k10b201.p.ssafy.io --rsa-key-size 2048"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - nginx
+    networks:
+      - devway_network
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+#      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+#      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+#      MONGO_INITDB_DATABASE: ${MONGO_INITDB_ROOT_DATABASE}
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: devway201
+      MONGO_INITDB_DATABASE: oringe
+      TZ: Asia/Seoul
+    restart: unless-stopped
+    networks:
+      - devway_network
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /jenkins:/var/jenkins_home
+      - /home:/home # 호스트의 /home 디렉토리를 컨테이너의 /home에 마운트
+    ports:
+      - 8080:8080
+    privileged: true
+    user: root
+    environment:
+      - TZ=Asia/Seoul
+    networks:
+      - devway_network
+
+volumes:
+  mongo_data:
+
+networks:
+  devway_network:
+    external: true

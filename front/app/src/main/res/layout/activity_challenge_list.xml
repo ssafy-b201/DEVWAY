@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/challenge_list"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    tools:context=".activity.challenge.ChallengeListActivity">
+
+
+    <!--텍스트-->
+    <TextView
+        android:id="@+id/challengeList_who"
+        style="@style/CommonMarginLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/oringe_main"
+        android:textSize="21sp"
+        android:textStyle="bold" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/footerBar"
+        android:layout_below="@+id/challengeList_who"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--진행상황-->
+            <LinearLayout
+                android:id="@+id/challengeList_status"
+                style="@style/CommonMarginLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp">
+
+                <com.ssafy.oringe.ui.component.common.TitleView
+                    android:id="@+id/challengeList_will"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    app:text="진행예정"
+                    app:textColor="@color/gray_600"
+                    app:textSize="5.5sp"
+                    tools:ignore="SmallSp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.ssafy.oringe.ui.component.common.TitleView
+                    android:id="@+id/challengeList_ing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:padding="10dp"
+                    app:text="진행중"
+                    app:textColor="@color/oringe_sub"
+                    app:textSize="5.5sp"
+                    tools:ignore="SmallSp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <com.ssafy.oringe.ui.component.common.TitleView
+                    android:id="@+id/challengeList_did"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    app:text="진행완료"
+                    app:textColor="@color/gray_600"
+                    app:textSize="5.5sp"
+                    tools:ignore="SmallSp" />
+            </LinearLayout>
+
+            <!--목록-->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="17dp"
+                android:layout_marginRight="17dp"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/challengeList_listLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
+        </LinearLayout>
+
+        <!--메뉴-->
+        <com.ssafy.oringe.ui.component.common.MenuView
+            android:id="@+id/menu_btn"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            app:src="@drawable/plus_btn" />
+
+    </FrameLayout>
+
+    <!--FooterBarView-->
+    <com.ssafy.oringe.ui.component.common.FooterBarView
+        android:id="@+id/footerBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:elevation="24dp"
+        android:paddingTop="8dp" />
+</RelativeLayout>
